@@ -6,18 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <style>
-            
-           
-        </style>
+
+
+    </style>
 </head>
 
 <body>
+    <script type="text/javascript">
+        document.onkeydown = function (event) {
+            let key_press = String.fromCharCode(event.keyCode);
+            let key_code = event.keyCode;
+            document.getElementById('kp').innerHTML=key_press;
+            document.getElementById('kc').innerHTML=key_code
+            const status= document.getElementById('status');
+            status.innerHTML ='Down Event Fired For: '+ key_press;
+        
 
-       
+
+        }
+        document.onkeyup = function(event) {
+
+            let key_press= String.fromCharCode(event.keyCode);
+            const status= document.getElementById('status');
+            status.innerHTML= 'Up Event Fired For: '+ key_press;
+        }
+
+    </script>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <img class="img-responsive" src="assets/images/gamebanner.png" alt="" ; top:20px; z-index: 0;
+                    height:50px; width=100%;>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="thumbnail">
+                <div class="jumbotron">
+                    <p id="status">Keyboard event status</p>
+
+                    <p>Key Pressed:</p> <span id="kp"></span>
+                    <br />
+                    <p>Key code:</p> <span id="kc"></span>
+                    <br />
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+
+
+        ///const answer = 4;
+        ///const guess = prompt("whats your guess?")
+
+        ///for (i = 0; i < 10; i++) {
+            //if (answer==guess) {
+
+                //alert("you guess correctly!");
+                //break;
+
+            //} else { guess = prompt('please try again');
+         //}
+
+
+
+        //}
+
+    </script>
+
+
 
 
 </body>
