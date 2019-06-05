@@ -16,269 +16,102 @@
     </style>
 </head>
 
-<body> 
+<body>
 
 
 
 </body>
-    
 
-    <div class="container">
-        <div class="row">
-            <div class="page-header">
-                <img class="img-responsive" src="assets/images/gamebanner.png" alt="" ; top:20px; z-index: 0;
-                    height:50px; width=100%;>
-            </div>
+
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <img class="img-responsive" src="assets/images/gamebanner.png" alt="" ; top:20px; z-index: 0; height:50px;
+                width=100%;>
         </div>
+    </div>
+    <style>
+        body {
+            background-color: teal;
+        }
+    </style>
+    <div class="col-lg-12">
 
-        <div class="col-lg-12">
-            
-            
-            <div class="thumbnail">
-                <div class="jumbotron">
-                    
 
-                    
-                    <!--Changing Image based on correct answers-->
+
+        <div class="thumbnail">
+            <div class="jumbotron">
+
+
+
+                <!--Changing Image based on correct answers-->
                 <h2>Press Any Key To Guess Puppies Breed!</h2>
                 <div>
-                        <img id="image" src="./assets/images/paws.png" width="40%" height="200">
-                    </div>
-                
-                
-               
-                    </div>
-                    
-                
-
-                <!--Current Word Container-->
-                <div>
-                    <h3 id="currentword">_ _ _ _ _</h3>
+                    <img id="image" src="./assets/images/paws.png" width="20%" height="20%">
                 </div>
-                <div id="scoreboard">
-                    <!--Guesses left Container-->
-                    <div class="sidebar">
-                        <h3>GUESSES LEFT:
-                            <span id="guessesremaining"></span>
-                        </h3>
-                    </div>
 
-                    <!--Wins counter Container-->
-                    <div class="sidebar"></div>
-                        <h3>WINS:
-                            <span id="winstracker"></span>
-                        </h3>
-                    </div>
-                    <!--Loss counter Container-->
-                    <div class="sidebar">
-                        <h3>LOSSES:
-                            <span id="losstracker"></span>
-                        </h3>
-                    </div>
 
-                    <!--Wrong guesses container-->
-                    <div class="sidebar">
-                        <h3>LETTERS YOU GUESSED WRONG:
-                            <span id="playerguesses"></span>
-                        </h3>
-                    </div>
-                </div>
+
             </div>
-        </div>
 
 
-                    
 
-
+            <!--Current Word Container-->
+            <div>
+                <h3 id="currentword">_ _ _ _ _</h3>
+            </div>
+            <div id="scoreboard">
+                <!--Guesses left Container-->
+                <div class="sidebar">
+                    <h3>Number of Guesses Remaining:
+                        <span id="guessesremaining"></span>
+                    </h3>
                 </div>
 
+                <!--Wins counter Container-->
+                <div class="sidebar"></div>
+                <h3>WINS:
+                    <span id="winstracker"></span>
+                </h3>
+            </div>
+            <!--Loss counter Container-->
+            <div class="sidebar">
+                <h3>LOSSES:
+                    <span id="losstracker"></span>
+                </h3>
+            </div>
+
+            <!--Wrong guesses container-->
+            <div class="sidebar">
+                <h3>Letters Already Guessed:
+                    <span id="playerguesses"></span>
+                </h3>
             </div>
         </div>
     </div>
+</div>
 
 
 
 
-    <script>
-        //VARIABLES
-const words = ['pug', 'shitzu', 'bulldog']
 
-//Empty variables to store values later
-let randomWord = "";
-let lettersOfWord = []
-let blanks = 0;
-let blanksAndCorrect = [];
-let wrongGuess = [];
+</div>
 
-//Counter Variables
-let wins = 0;
-let losses = 0;
-let guessesRemaining = 9;
+</div>
+</div>
+</div>
 
 
 
-// ALL FUNCTIONS
-/////////////////////////
 
-
-//__________________________________________________________
-//GAME START FUNCTION
-//__________________________________________________________
-function Game() {
-    //computer generates random word from words array
-    randomWord = words[Math.floor(Math.random() * words.length)];
-
-    // split the individual word into separate arrays, and store in new array 
-    lettersOfWord = randomWord.split("");
-
-    //store length of word in blanks, for later use
-    blanks = lettersOfWord.length;
-
-    //creating a loop to generate "_" for each letter in array stored in blanks
-    for (var i = 0; i < blanks; i++) {
-        blanksAndCorrect.push("_");
-    }
-
-    //showing the "_" within HTML
-    document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join("  ");
-
-    //console logging 
-    console.log(randomWord);
-    console.log(lettersOfWord)
-    console.log(blanks)
-    console.log(blanksAndCorrect)
-}
+<script>
 
 
 
-const pug= document.getElementById('pug');
-const shitzu = document.getElementById('shitzu');
-const bulldog = document.getElementById('bulldog');
-
-
-    //pug / Image
-    //---------------------------
-    if (randomWord === words[0]) {
-        
-
-        document.getElementById("image").src = "./assets/images/pug.jpg";
-    }
-    // shitzu /Image
-    //---------------------------
-    else if (randomWord === words[1]) {
-
-        document.getElementById("image").src = "./assets/images/Shitzu";
-    }
-    //bulldog / Image
-    //---------------------------
-    else if (randomWord === words[2]) {
-
-        document.getElementById("image").src = "./assets/images/bulldog.jpg";
-    }
-;
-
-    //__________________________________________________________
-    //RESET FUNCTION
-    //__________________________________________________________
-    function reset() {
-        guessesRemaining = 9;
-        wrongGuess = [];
-        blanksAndCorrect = [];
-        Game()
-    }
-
-    //__________________________________________________________
-    //CHECK LETTERS/COMPARE FUNCTION
-    //__________________________________________________________
-
-    //If/Else, to see if letter selected matches random word
-    function checkLetters(letter) {
-        let letterInWord = false;
-        //if the generated randomword is equal to the letter entered... then variable is true
-        for (var i = 0; i < blanks; i++) {
-            if (randomWord[i] == letter) {
-                letterInWord = true;
-            }
-        }
-        //if letterInWord (false)
-        if (letterInWord) {
-            //check each letter to see if it matches word
-            for (var i = 0; i < blanks; i++) {
-                if (randomWord[i] == letter) {
-                    blanksAndCorrect[i] = letter;
-                }
-            }
-        }
-        //otherwise, push the incorrect guess in the wrong guesses section, and reduce remaining guesses
-        else {
-            wrongGuess.push(letter);
-            guessesRemaining--;
-        }
-        console.log(blanksAndCorrect);
-    }
-
-    //__________________________________________________________
-    //FINAL COMPLETE FUNCTION
-    //__________________________________________________________
-
-    //check to see if player won...
-    function complete() {
-        console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
-
-        //if WON...then alert,  display image and reset new round
-        if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
-            wins++;
-            alert('You Win!');
-
-            reset()
-            //display wins on screen
-            document.getElementById("winstracker").innerHTML = " " + wins;
-
-            //if LOST...then alert and reset new round
-        } else if (guessesRemaining === 0) {
-            losses++;
-            alert ('Try Again');
-            reset()
-
-            document.getElementById("losstracker").innerHTML = " " + losses;
-        }
-        //display losses on screen && guesses remaining countdown
-        document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
-        document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
-    }
-
-
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    //_____________________________________________________
-    // EXECUTE CODE 
-    //_____________________________________________________
-
-    //call start game function
-    Game()
-
-    //check for keyup, and convert to lowercase then store in guesses
-    document.onkeyup = function (event) {
-        let guesses = String.fromCharCode(event.keyCode).toLowerCase();
-        //check to see if guess entered matches value of random word
-        checkLetters(guesses);
-        //process wins/loss 
-        complete();
-        //store player guess in console for reference 
-        console.log(guesses);
-
-        //display/store incorrect letters on screen
-        document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
-    } 
-
-        
-
-        
 
 
 
-        
-
-    </script>
+</script>
 
 
 

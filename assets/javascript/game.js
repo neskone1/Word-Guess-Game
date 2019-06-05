@@ -1,5 +1,5 @@
 //VARIABLES
-const words = ['pug', 'shitzu', 'bulldog']
+const words = ['pug', 'shitzu', 'bulldog', 'germansheperd', 'bullterrier','poodle']
 
 //Empty variables to store values later
 let randomWord = "";
@@ -49,121 +49,142 @@ function Game() {
 
 
 
-const pug= document.getElementById('pug');
+const pug = document.getElementById('pug');
 const shitzu = document.getElementById('shitzu');
 const bulldog = document.getElementById('bulldog');
+const germansheperd = document.getElementById('germansheperd');
+const bullterrier = document.getElementById('bullterrier');
 
 
-    //pug / Image
-    //---------------------------
-    if (randomWord === words[0]) {
-        
+//pug / Image
+//---------------------------
+if (randomWord === words[0]) {
 
-        document.getElementById("image").src = "./assets/images/pug.jpg";
+
+    document.getElementById("image").src = "./assets/images/pug.jpg";
+    console.log(Image);
+}
+// shitzu /Image
+//---------------------------
+else if (randomWord === words[1]) {
+
+    document.getElementById("image").src = "./assets/images/Shitzu.jpg";
+    console.log(Image);
+}
+//bulldog / Image
+//---------------------------
+else if (randomWord === words[2]) {
+
+    document.getElementById("image").src = "./assets/images/bulldog.jpg";
+    console.log(Image);
+
+
+}
+
+//german sheperd
+//------------------------
+else if (randomWord === words[3]) {
+
+    document.getElementById("image").src = "./assets/images/germansheperd.jpg";
+    console.log(Image);
+}
+//bull terrier
+//------------------------
+else if (eandomword === word[4]) {
+
+    document.getElementById("image").src = "./assets/images/germansheperd.jpg";
+    console.log(Image);
+}
+
+//__________________________________________________________
+//RESET FUNCTION
+//__________________________________________________________
+function reset() {
+    guessesRemaining = 9;
+    wrongGuess = [];
+    blanksAndCorrect = [];
+    Game()
+}
+
+//__________________________________________________________
+//CHECK LETTERS/COMPARE FUNCTION
+//__________________________________________________________
+
+//If/Else, to see if letter selected matches random word
+function checkLetters(letter) {
+    let letterInWord = false;
+    //if the generated randomword is equal to the letter entered... then variable is true
+    for (var i = 0; i < blanks; i++) {
+        if (randomWord[i] == letter) {
+            letterInWord = true;
+        }
     }
-    // shitzu /Image
-    //---------------------------
-    else if (randomWord === words[1]) {
-
-        document.getElementById("image").src = "./assets/images/Shitzu";
-    }
-    //bulldog / Image
-    //---------------------------
-    else if (randomWord === words[2]) {
-
-        document.getElementById("image").src = "./assets/images/bulldog.jpg";
-    }
-;
-
-    //__________________________________________________________
-    //RESET FUNCTION
-    //__________________________________________________________
-    function reset() {
-        guessesRemaining = 9;
-        wrongGuess = [];
-        blanksAndCorrect = [];
-        Game()
-    }
-
-    //__________________________________________________________
-    //CHECK LETTERS/COMPARE FUNCTION
-    //__________________________________________________________
-
-    //If/Else, to see if letter selected matches random word
-    function checkLetters(letter) {
-        let letterInWord = false;
-        //if the generated randomword is equal to the letter entered... then variable is true
+    //if letterInWord (false)
+    if (letterInWord) {
+        //check each letter to see if it matches word
         for (var i = 0; i < blanks; i++) {
             if (randomWord[i] == letter) {
-                letterInWord = true;
+                blanksAndCorrect[i] = letter;
             }
         }
-        //if letterInWord (false)
-        if (letterInWord) {
-            //check each letter to see if it matches word
-            for (var i = 0; i < blanks; i++) {
-                if (randomWord[i] == letter) {
-                    blanksAndCorrect[i] = letter;
-                }
-            }
-        }
-        //otherwise, push the incorrect guess in the wrong guesses section, and reduce remaining guesses
-        else {
-            wrongGuess.push(letter);
-            guessesRemaining--;
-        }
-        console.log(blanksAndCorrect);
     }
-
-    //__________________________________________________________
-    //FINAL COMPLETE FUNCTION
-    //__________________________________________________________
-
-    //check to see if player won...
-    function complete() {
-        console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
-
-        //if WON...then alert,  display image and reset new round
-        if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
-            wins++;
-            alert('You Win!');
-
-            reset()
-            //display wins on screen
-            document.getElementById("winstracker").innerHTML = " " + wins;
-
-            //if LOST...then alert and reset new round
-        } else if (guessesRemaining === 0) {
-            losses++;
-            alert ('Try Again');
-            reset()
-
-            document.getElementById("losstracker").innerHTML = " " + losses;
-        }
-        //display losses on screen && guesses remaining countdown
-        document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
-        document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
+    //otherwise, push the incorrect guess in the wrong guesses section, and reduce remaining guesses
+    else {
+        wrongGuess.push(letter);
+        guessesRemaining--;
     }
+    console.log(blanksAndCorrect);
+}
+
+//__________________________________________________________
+//FINAL COMPLETE FUNCTION
+//__________________________________________________________
+
+//check to see if player won...
+function complete() {
+    console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
+
+    //if WON...then alert,  display image and reset new round
+    if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
+        wins++;
+        alert('You Win!');
+
+        reset()
+        //display wins on screen
+        document.getElementById("winstracker").innerHTML = " " + wins;
+
+        //if LOST...then alert and reset new round
+    } else if (guessesRemaining === 0) {
+        losses++;
+        alert('Try Again');
+        reset()
+
+        document.getElementById("losstracker").innerHTML = " " + losses;
+    }
+    //display losses on screen && guesses remaining countdown
+    document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
+    document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
+}
 
 
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    //_____________________________________________________
-    // EXECUTE CODE 
-    //_____________________________________________________
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//_____________________________________________________
+// EXECUTE CODE 
+//_____________________________________________________
 
-    //call start game function
-    Game()
+//call start game function
+Game()
 
-    //check for keyup, and convert to lowercase then store in guesses
-    document.onkeyup = function (event) {
-        let guesses = String.fromCharCode(event.keyCode).toLowerCase();
-        //check to see if guess entered matches value of random word
-        checkLetters(guesses);
-        //process wins/loss 
-        complete();
-        //store player guess in console for reference 
-        console.log(guesses);
+//check for keyup, and convert to lowercase then store in guesses
+document.onkeyup = function (event) {
+    let guesses = String.fromCharCode(event.keyCode).toLowerCase();
+    //check to see if guess entered matches value of random word
+    checkLetters(guesses);
+    //process wins/loss 
+    complete();
+    //store player guess in console for reference 
+    console.log(guesses);
 
-        //display/store incorrect letters on screen
-        document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
-    } 
+    //display/store incorrect letters on screen
+    document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
+} 
