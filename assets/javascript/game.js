@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 //VARIABLES
 const words = ['pug', 'shitzu', 'bulldog', 'germansheperd', 'bullterrier','poodle']
 
@@ -45,6 +55,8 @@ function Game() {
     console.log(lettersOfWord)
     console.log(blanks)
     console.log(blanksAndCorrect)
+
+
 }
 
 
@@ -54,47 +66,11 @@ const shitzu = document.getElementById('shitzu');
 const bulldog = document.getElementById('bulldog');
 const germansheperd = document.getElementById('germansheperd');
 const bullterrier = document.getElementById('bullterrier');
+const poodle = document.getElementById('poodle');
 
 
-//pug / Image
-//---------------------------
-if (randomWord === words[0]) {
 
 
-    document.getElementById("image").src = "./assets/images/pug.jpg";
-    console.log(Image);
-}
-// shitzu /Image
-//---------------------------
-else if (randomWord === words[1]) {
-
-    document.getElementById("image").src = "./assets/images/Shitzu.jpg";
-    console.log(Image);
-}
-//bulldog / Image
-//---------------------------
-else if (randomWord === words[2]) {
-
-    document.getElementById("image").src = "./assets/images/bulldog.jpg";
-    console.log(Image);
-
-
-}
-
-//german sheperd
-//------------------------
-else if (randomWord === words[3]) {
-
-    document.getElementById("image").src = "./assets/images/germansheperd.jpg";
-    console.log(Image);
-}
-//bull terrier
-//------------------------
-else if (eandomword === word[4]) {
-
-    document.getElementById("image").src = "./assets/images/germansheperd.jpg";
-    console.log(Image);
-}
 
 //__________________________________________________________
 //RESET FUNCTION
@@ -146,6 +122,57 @@ function complete() {
 
     //if WON...then alert,  display image and reset new round
     if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
+       
+        
+//pug / Image
+//---------------------------
+if (randomWord === words[0]) {
+
+
+    document.getElementById("image").src = "./assets/images/pug.jpg";
+    console.log(Image);
+}
+// shitzu /Image
+//---------------------------
+else if (randomWord === words[1]) {
+
+    document.getElementById("image").src = "./assets/images/Shitzu.jpg";
+    console.log(Image);
+}
+//bulldog / Image
+//---------------------------
+else if (randomWord === words[2]) {
+
+    document.getElementById("image").src = "./assets/images/bulldog.jpg";
+    console.log(Image);
+
+
+}
+
+//german sheperd
+//------------------------
+else if (randomWord === words[3]) {
+
+    document.getElementById("image").src = "./assets/images/germansheperd.jpg";
+    console.log(Image);
+}
+
+//bull terrier
+//------------------------
+else if (randomWord === words[4]) {
+
+    document.getElementById("image").src = "./assets/images/bullterrier.jpg";
+    console.log(Image);
+    
+}
+
+// poodle
+//------------------------
+else if (randomWord === words[5]) {
+
+    document.getElementById("image").src = "./assets/images/poodle.jpg"
+}
+
         wins++;
         alert('You Win!');
 
